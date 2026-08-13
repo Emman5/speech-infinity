@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" role="img" aria-label="Founder photo placeholder">
+  <rect width="400" height="500" fill="#E4EDE8"/>
+  <circle cx="200" cy="195" r="72" fill="#B9CEC3"/>
+  <path d="M60 460c0-77 63-140 140-140s140 63 140 140z" fill="#B9CEC3"/>
+  <text x="200" y="486" text-anchor="middle" font-family="Georgia, serif" font-size="18" fill="#14392C">
+    Photo placeholder — client to supply
+  </text>
+</svg>

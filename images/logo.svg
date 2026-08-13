@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120" role="img" aria-label="Speech Infinity Therapy Group">
+  <!-- Stand-in for the client's logo file. Swap this out for the supplied PNG/SVG before launch. -->
+  <defs>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#E6CE84"/>
+      <stop offset="45%" stop-color="#C9A63C"/>
+      <stop offset="100%" stop-color="#9C7A22"/>
+    </linearGradient>
+    <linearGradient id="green" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1E5B47"/>
+      <stop offset="100%" stop-color="#0F3527"/>
+    </linearGradient>
+    <clipPath id="leftLobe">
+      <path d="M100,60 C70,18 18,20 18,60 C18,100 70,102 100,60 Z"/>
+    </clipPath>
+  </defs>
+
+  <!-- infinity ribbon: gold edge under, green body over -->
+  <g fill="none" stroke-linecap="round">
+    <path d="M100,60 C70,18 18,20 18,60 C18,100 70,102 100,60 C130,18 182,20 182,60 C182,100 130,102 100,60 Z"
+          stroke="url(#gold)" stroke-width="30"/>
+    <path d="M100,60 C70,18 18,20 18,60 C18,100 70,102 100,60 C130,18 182,20 182,60 C182,100 130,102 100,60 Z"
+          stroke="url(#green)" stroke-width="21"/>
+  </g>
+
+  <!-- filled left lobe with face profile -->
+  <g clip-path="url(#leftLobe)">
+    <rect x="10" y="10" width="100" height="100" fill="url(#green)"/>
+    <path d="M84 108c-2-10 4-14 4-22 0-6-6-7-6-12 0-6 7-8 7-15 0-8-6-13-6-20 0-10 8-19 18-22H36c-8 6-13 15-13 26 0 26 22 47 46 51 5 1 10 3 15 14z"
+          fill="#F9F8F3" opacity=".97"/>
+  </g>
+
+  <!-- gold sound wave leaving the mouth -->
+  <path d="M96 60h5l4-13 5 26 5-19 4 12 4-6h6"
+        fill="none" stroke="url(#gold)" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
