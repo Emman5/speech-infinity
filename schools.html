@@ -5,6 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>School District Services | Speech Infinity Therapy Group</title>
 <meta name="description" content="Contracted bilingual speech-language pathology for Houston charter schools and districts: evaluations, direct therapy, IEP goals, ARD support, and TEA compliance documentation.">
+<link rel="canonical" href="https://speechinfinitytg.com/schools.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Speech Infinity Therapy Group">
+<meta property="og:title" content="School District Services | Speech Infinity Therapy Group">
+<meta property="og:description" content="Contracted bilingual speech-language pathology for Houston charter schools and districts: evaluations, direct therapy, IEP goals, ARD support, and TEA compliance documentation.">
+<meta property="og:url" content="https://speechinfinitytg.com/schools.html">
+<meta property="og:image" content="https://speechinfinitytg.com/images/social-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="School District Services | Speech Infinity Therapy Group">
+<meta name="twitter:description" content="Contracted bilingual speech-language pathology for Houston charter schools and districts: evaluations, direct therapy, IEP goals, ARD support, and TEA compliance documentation.">
+<meta name="twitter:image" content="https://speechinfinitytg.com/images/social-card.png">
+<meta name="theme-color" content="#0F2B22">
 <link rel="icon" href="images/logo.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -185,7 +200,9 @@
           confidential student information in this form.</p>
       </div>
 
-      <form class="form-panel reveal" data-form action="REPLACE_WITH_FORM_ENDPOINT" method="POST">
+      <form class="form-panel reveal" data-form action="https://tc-forms.technicalcreations.workers.dev/f/speech-infinity" method="POST">
+        <input type="hidden" name="_form" value="schools">
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" class="hp">
         <div class="field-row">
           <div class="field">
             <label for="s-name">Your Name <span class="req">*</span></label>
@@ -233,6 +250,7 @@
           <label for="s-message">Message</label>
           <textarea id="s-message" name="message" placeholder="Approximate caseload size, campuses, start date…"></textarea>
         </div>
+        <div class="cf-turnstile" data-sitekey="REPLACE_WITH_TURNSTILE_SITEKEY" data-theme="light"></div>
         <button type="submit" class="btn btn-gold btn-lg" style="width:100%">Request a Partnership Proposal</button>
         <p class="form-status" role="status"></p>
         <p class="form-note">We typically respond within one business day.</p>
@@ -276,5 +294,8 @@
 </footer>
 
 <script src="js/main.js"></script>
+<!-- Cloudflare Web Analytics -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "REPLACE_WITH_CF_ANALYTICS_TOKEN"}'></script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </body>
 </html>

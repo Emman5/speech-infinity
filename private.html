@@ -5,6 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Private Speech Therapy | Speech Infinity Therapy Group</title>
 <meta name="description" content="Individualized bilingual (English/Spanish) speech therapy for children in the Greater Houston area — evaluations, articulation, language, fluency, and social communication.">
+<link rel="canonical" href="https://speechinfinitytg.com/private.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Speech Infinity Therapy Group">
+<meta property="og:title" content="Private Speech Therapy | Speech Infinity Therapy Group">
+<meta property="og:description" content="Individualized bilingual (English/Spanish) speech therapy for children in the Greater Houston area — evaluations, articulation, language, fluency, and social communication.">
+<meta property="og:url" content="https://speechinfinitytg.com/private.html">
+<meta property="og:image" content="https://speechinfinitytg.com/images/social-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Private Speech Therapy | Speech Infinity Therapy Group">
+<meta name="twitter:description" content="Individualized bilingual (English/Spanish) speech therapy for children in the Greater Houston area — evaluations, articulation, language, fluency, and social communication.">
+<meta name="twitter:image" content="https://speechinfinitytg.com/images/social-card.png">
+<meta name="theme-color" content="#0F2B22">
 <link rel="icon" href="images/logo.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -166,7 +181,9 @@
           or diagnostic documents. We will collect what is needed securely once we connect.</p>
       </div>
 
-      <form class="form-panel reveal" data-form action="REPLACE_WITH_FORM_ENDPOINT" method="POST">
+      <form class="form-panel reveal" data-form action="https://tc-forms.technicalcreations.workers.dev/f/speech-infinity" method="POST">
+        <input type="hidden" name="_form" value="private">
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" class="hp">
         <div class="field-row">
           <div class="field">
             <label for="p-name">Parent / Guardian Name <span class="req">*</span></label>
@@ -211,6 +228,7 @@
           <label for="p-message">Anything else?</label>
           <textarea id="p-message" name="message" placeholder="Availability, location, questions…"></textarea>
         </div>
+        <div class="cf-turnstile" data-sitekey="REPLACE_WITH_TURNSTILE_SITEKEY" data-theme="light"></div>
         <button type="submit" class="btn btn-gold btn-lg" style="width:100%">Schedule a Consultation</button>
         <p class="form-status" role="status"></p>
         <p class="form-note">We typically respond within one business day.</p>
@@ -254,5 +272,8 @@
 </footer>
 
 <script src="js/main.js"></script>
+<!-- Cloudflare Web Analytics -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "REPLACE_WITH_CF_ANALYTICS_TOKEN"}'></script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </body>
 </html>

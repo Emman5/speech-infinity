@@ -39,8 +39,8 @@
   }
 
   /* ---- forms ----
-     Set the form's action to a Formspree (or similar) endpoint before launch.
-     Until then, submission is intercepted and a friendly notice is shown. */
+     Submissions POST to the Technical Creations forms Worker, which emails
+     them to the practice. The endpoint lives in each form's action attribute. */
   document.querySelectorAll('form[data-form]').forEach(function (form) {
     form.addEventListener('submit', function (e) {
       var status = form.querySelector('.form-status');
@@ -67,22 +67,38 @@
         headers: { Accept: 'application/json' }
       })
         .then(function (r) {
-          if (!r.ok) throw new Error('bad response');
+          return r.json().catch(function () { return {}; }).then(function (data) {
+            if (!r.ok) {
+              throw new Error(
+                data.error || 'Something went wrong. Please email speechinfinitytg@gmail.com directly.'
+              );
+            }
+            return data;
+          });
+        })
+        .then(function () {
           form.reset();
           if (status) {
             status.className = 'form-status ok';
             status.textContent = 'Thank you — your message has been sent. We will be in touch shortly.';
           }
         })
-        .catch(function () {
+        .catch(function (err) {
           if (status) {
+            // A network/CORS failure surfaces as "Failed to fetch", which means
+            // nothing to a visitor — always give them the mailto fallback.
+            var msg = err.message || '';
+            if (!msg || /failed to fetch|networkerror|load failed/i.test(msg)) {
+              msg = 'We could not send your message. Please email speechinfinitytg@gmail.com directly.';
+            }
             status.className = 'form-status err';
-            status.textContent =
-              'Something went wrong. Please email speechinfinitytg@gmail.com directly.';
+            status.textContent = msg;
           }
         })
         .then(function () {
           if (btn) { btn.disabled = false; btn.textContent = label; }
+          // Turnstile tokens are single-use — issue a fresh one for any retry.
+          if (window.turnstile) { window.turnstile.reset(); }
         });
     });
   });
