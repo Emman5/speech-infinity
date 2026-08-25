@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" role="img" aria-label="In-home therapy photo placeholder">
+  <rect width="400" height="500" fill="#DCEAE5"/>
+  <rect x="40" y="150" width="320" height="230" rx="10" fill="#B9CEC3"/>
+  <circle cx="150" cy="255" r="34" fill="#8FB2A4"/>
+  <circle cx="245" cy="270" r="24" fill="#8FB2A4"/>
+  <text x="200" y="440" text-anchor="middle" font-family="Georgia, serif" font-size="17" fill="#14392C">
+    In-home therapy photo
+  </text>
+  <text x="200" y="464" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#3B5C4E">
+    client to supply
+  </text>
+</svg>
