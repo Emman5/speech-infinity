@@ -145,7 +145,7 @@ section { padding: clamp(56px, 8vw, 104px) 0; }
 .brand img, .brand svg { height: 46px; width: auto; }
 /* client-supplied logo already contains the wordmark — show it alone */
 .brand.brand-logo { gap: 0; }
-.brand.brand-logo img { height: 58px; mix-blend-mode: multiply; }
+.brand.brand-logo img { height: 58px; }
 .brand.brand-logo .brand-text { display: none; }
 .brand-text { display: flex; flex-direction: column; line-height: 1.05; }
 .brand-name {
