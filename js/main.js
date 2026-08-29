@@ -76,12 +76,17 @@
             return data;
           });
         })
-        .then(function () {
+        .then(function (data) {
           form.reset();
           if (status) {
             status.className = 'form-status ok';
-            status.textContent = 'Thank you — your message has been sent. We will be in touch shortly.';
+            status.textContent =
+              (data && data.message) ||
+              form.getAttribute('data-success') ||
+              'Thank you — your message has been sent. We will be in touch shortly.';
           }
+          // A submitted review is not visible yet; re-pull in case it was auto-published.
+          if (form.getAttribute('action').indexOf('/r/') !== -1) { loadReviews(); }
         })
         .catch(function (err) {
           if (status) {
@@ -102,6 +107,67 @@
         });
     });
   });
+
+  /* ---- review form: only ask for what the chosen credit needs ---- */
+  document.querySelectorAll('form[data-form] input[name="display"]').forEach(function (radio) {
+    var form = radio.form;
+    var apply = function () {
+      var mode = (form.querySelector('input[name="display"]:checked') || {}).value;
+      var nameField = form.querySelector('#r-name');
+      var roleField = form.querySelector('#r-role');
+      if (!nameField || !roleField) return;
+      // Anonymous needs neither; role-only needs the role; named needs both.
+      nameField.required = mode === 'name';
+      roleField.required = mode !== 'anonymous';
+      nameField.closest('.field').hidden = mode === 'anonymous';
+      roleField.closest('.field').hidden = mode === 'anonymous';
+    };
+    radio.addEventListener('change', apply);
+    apply();
+  });
+
+  /* ---- approved reviews ----
+     The practice approves a review in the moderation console and it appears
+     here on the next page load — no redeploy. If the endpoint is unreachable
+     the section simply stays hidden. */
+  function loadReviews() {
+    var box = document.querySelector('[data-reviews]');
+    if (!box || !window.fetch) return;
+    var endpoint = box.getAttribute('data-endpoint');
+    if (!endpoint || endpoint.indexOf('REPLACE_WITH') !== -1) return;
+
+    fetch(endpoint, { headers: { Accept: 'application/json' } })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (data) {
+        var reviews = (data && data.reviews) || [];
+        if (!reviews.length) return;
+        box.textContent = '';
+        reviews.forEach(function (rev) {
+          var card = document.createElement('blockquote');
+          card.className = 'testimonial in';
+          var quote = document.createElement('p');
+          // textContent, never innerHTML — this is text a stranger wrote.
+          quote.textContent = '"' + rev.quote + '"';
+          var foot = document.createElement('footer');
+          var attrib = document.createElement('span');
+          attrib.className = 't-attrib';
+          attrib.textContent = rev.name || 'Client';
+          foot.appendChild(attrib);
+          if (rev.detail) {
+            var detail = document.createElement('span');
+            detail.className = 't-detail';
+            detail.textContent = rev.detail;
+            foot.appendChild(detail);
+          }
+          card.appendChild(quote);
+          card.appendChild(foot);
+          box.appendChild(card);
+        });
+        box.hidden = false;
+      })
+      .catch(function () { /* endpoint not up yet — leave the section hidden */ });
+  }
+  loadReviews();
 
   /* ---- current year ---- */
   document.querySelectorAll('[data-year]').forEach(function (el) {

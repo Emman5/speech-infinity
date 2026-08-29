@@ -27,26 +27,34 @@ python3 -m http.server 8080
    account exists.
 2. **Analytics token.** All five pages carry `data-cf-beacon` with
    `REPLACE_WITH_CF_ANALYTICS_TOKEN`.
-3. **Forms Worker.** Both forms POST to
-   `https://tc-forms.technicalcreations.workers.dev/f/speech-infinity`. That Worker
-   (`ops/forms-worker/` in the parent workspace) is written but not deployed, and the
-   `workers.dev` subdomain must match the real Cloudflare account.
-4. **Domain + DNS.** `speechinfinitytg.com` is not registered and does not resolve. The
+3. **Forms Worker.** The two lead forms POST to
+   `https://tc-forms.technicalcreations.workers.dev/f/speech-infinity`; the review form
+   posts to `/r/speech-infinity` on the same host. That Worker (`ops/forms-worker/` in
+   the parent workspace) is written and tested but not deployed, and the `workers.dev`
+   subdomain must match the real Cloudflare account.
+4. **Review storage + moderation.** Reviews need a KV namespace
+   (`wrangler kv namespace create REVIEWS`) and `REVIEW_ADMIN_TOKEN_SPEECH_INFINITY`
+   set as a secret. Until both exist the review section stays hidden and the form
+   reports an error rather than silently dropping anything.
+5. **Domain + DNS.** `speechinfinitytg.com` is not registered and does not resolve. The
    canonical URLs and `og:image` absolute URLs assume it.
 
 ### Blocked on the client
 
-5. **Credentials to verify.** The credentials table lists *M.S. — Universitat de Vic, Spain* and
+6. **Credentials to verify.** The credentials list shows *M.S. — Universitat de Vic, Spain* and
    *B.S. — University of Houston*. The bio Janette supplied only says "bachelor's and master's
    degrees in speech-language pathology." Confirm institutions before publishing.
-6. **Founder quote.** The pull quote on `about.html` ("Every child has infinite potential…") was
+7. **Founder quote.** The pull quote on `about.html` ("Every student has infinite potential…") was
    drafted for her, not written by her. She must approve or replace it.
-7. **Testimonials** are verbatim from `Testimonials.docx`; home/schools pages show excerpts.
-   Confirm each person consents to being named publicly.
+8. ~~**Testimonials** consent.~~ Resolved: the five named reviewers are now credited by
+   role only (*Special Education Coordinator*, *Licensed School Psychologist*, …). The
+   wording is still verbatim from `Testimonials.docx`, but no individual is identified,
+   so no consent is outstanding. If anyone later wants their name shown, add it back by
+   hand or have them resubmit through the review form.
 
 ### Optional
 
-8. **Hero photography.** Hero uses a green gradient. To use a photo, set
+9. **Hero photography.** Hero uses a green gradient. To use a photo, set
    `--hero-img: url('images/hero.jpg')` on the `.hero` element.
 
 ## Images
@@ -62,6 +70,30 @@ python3 -m http.server 8080
 
 Full-resolution originals live in `../source-assets/`, outside the deployed site.
 Portrait slots are `aspect-ratio: 4/5` with `object-fit: cover`.
+
+## Reviews
+
+`about.html` collects its own testimonials. A visitor fills in the form under
+*Share Your Experience*; the Worker holds it for approval and emails Janette a
+link; one click publishes it and it appears on the next page load. No redeploy.
+
+The submitter chooses how they are credited — **role only** (the default),
+**name and role**, or **fully anonymous**. Their email is collected so Janette
+can confirm a review is genuine and is never published. Full details, including
+the moderation console and why approval is on, are in
+`ops/forms-worker/README.md`.
+
+Two things on this page make it work:
+
+- `#communityReviews` carries `data-reviews` and `data-endpoint`. `main.js`
+  fetches it, renders each review with `textContent` (never `innerHTML` — this
+  is text a stranger wrote), and leaves the section `hidden` if the endpoint is
+  empty or unreachable. The page is correct before the Worker exists.
+- The review form is an ordinary `data-form`, so it reuses the same AJAX
+  submit as the lead forms. `data-success` gives it its own confirmation copy.
+
+The five original testimonials are hand-written in the HTML and are separate
+from this pipeline.
 
 ## Accessibility
 

@@ -232,7 +232,7 @@
             and dependable individuals I've worked with. She has a strong understanding of compliance and handles
             her responsibilities with professionalism and care. She has experience working with a wide range of
             ages and disabilities, and both students and parents love her."</p>
-          <footer><span class="t-name">Alexandra Crane</span><span class="t-role">Special Education Coordinator</span></footer>
+          <footer><span class="t-attrib">Special Education Coordinator</span></footer>
         </blockquote>
 
         <blockquote class="testimonial reveal">
@@ -240,14 +240,14 @@
             responsibilities efficiently while maintaining high-quality care. Her communication with parents is
             clear, compassionate, and professional, helping families feel informed and supported throughout the
             process."</p>
-          <footer><span class="t-name">Rozanne Millington</span><span class="t-role">M.A., CCC-SLP</span></footer>
+          <footer><span class="t-attrib">Speech-Language Pathologist, M.A., CCC-SLP</span></footer>
         </blockquote>
 
         <blockquote class="testimonial reveal">
           <p>"I have had the privilege of working with Mrs. Janette Vazquez, SLP, for the past seven years, and
             her dedication to speech therapy is truly exceptional. I have personally witnessed the growth of
             students who have received her services, both academically and socially."</p>
-          <footer><span class="t-name">Danielle Grant</span><span class="t-role">Special Education Teacher</span></footer>
+          <footer><span class="t-attrib">Special Education Teacher</span></footer>
         </blockquote>
 
         <blockquote class="testimonial reveal">
@@ -255,7 +255,7 @@
             and knowledgeable Speech-Language Pathologist who consistently demonstrates integrity and the highest
             ethical standards. Her professionalism, expertise, and dedication make her an invaluable partner to
             our school community."</p>
-          <footer><span class="t-name">Sara Maccagnan</span><span class="t-role">Licensed School Psychologist</span></footer>
+          <footer><span class="t-attrib">Licensed School Psychologist</span></footer>
         </blockquote>
 
 
@@ -263,9 +263,109 @@
           <p>"Mrs. Vazquez upholds the highest standards of care and ensures her entire team is meticulously
             trained to deliver that same level of excellence. Families and professionals alike can feel confident
             knowing they are receiving compassionate, high-quality support."</p>
-          <footer><span class="t-name">Nuria Gisbert</span><span class="t-role">General Education Teacher</span></footer>
+          <footer><span class="t-attrib">General Education Teacher</span></footer>
         </blockquote>
       </div>
+
+      <!-- Reviews submitted through the form below and approved by the practice.
+           Rendered client-side; the section stays hidden if there are none. -->
+      <div class="testimonial-grid" id="communityReviews" data-reviews
+           data-endpoint="https://tc-forms.technicalcreations.workers.dev/r/speech-infinity"
+           hidden></div>
+
+      <p class="center" style="margin-top:40px">
+        <a href="#share" class="btn btn-green">Share your experience</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- SUBMIT A REVIEW -->
+  <section id="share" class="bg-white">
+    <div class="wrap split">
+      <div class="reveal">
+        <p class="eyebrow">Share Your Experience</p>
+        <h2>Worked With Us? Tell People.</h2>
+        <p class="lede">Schools, families, and colleagues are all welcome to leave a review. You choose
+          how you are credited — including not being named at all.</p>
+        <ul class="checklist">
+          <li><strong>Your name is yours</strong>Withhold it and only your role appears, or stay fully
+            anonymous. We never publish your email address.</li>
+          <li><strong>Nothing goes up automatically</strong>Every review is read by Speech Infinity
+            before it appears on this page.</li>
+          <li><strong>Please keep it general</strong>No student names, diagnoses, or any other
+            confidential information.</li>
+        </ul>
+      </div>
+
+      <form class="form-panel reveal" data-form
+            data-success="Thank you. Your review has been sent to Speech Infinity for approval."
+            action="https://tc-forms.technicalcreations.workers.dev/r/speech-infinity" method="POST">
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" class="hp">
+
+        <div class="field">
+          <label for="r-relationship">How do you know Speech Infinity? <span class="req">*</span></label>
+          <select id="r-relationship" name="relationship" required>
+            <option value="">Please choose…</option>
+            <option value="school">School or district partner</option>
+            <option value="family">Parent or family member</option>
+            <option value="colleague">Professional colleague</option>
+            <option value="other">Something else</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="r-quote">Your review <span class="req">*</span></label>
+          <textarea id="r-quote" name="quote" required minlength="40" maxlength="1200"
+                    placeholder="What was working with Speech Infinity like?"></textarea>
+        </div>
+
+        <fieldset class="field fieldset">
+          <legend>How should we credit you? <span class="req">*</span></legend>
+          <div class="radio-stack">
+            <label><input type="radio" name="display" value="role" checked>
+              <span><strong>My role only</strong> — e.g. “Special Education Coordinator”. Your name stays private.</span></label>
+            <label><input type="radio" name="display" value="name">
+              <span><strong>My name and role</strong> — e.g. “Marta Ochoa — Assistant Principal”.</span></label>
+            <label><input type="radio" name="display" value="anonymous">
+              <span><strong>Fully anonymous</strong> — only how you know us, e.g. “Parent of a client”.</span></label>
+          </div>
+        </fieldset>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="r-name">Your name</label>
+            <input id="r-name" name="name" type="text" autocomplete="name">
+          </div>
+          <div class="field">
+            <label for="r-role">Your role or title</label>
+            <input id="r-role" name="role" type="text" placeholder="e.g. Special Education Teacher">
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="r-organization">School, district, or organisation</label>
+          <input id="r-organization" name="organization" type="text">
+        </div>
+
+        <div class="field">
+          <label for="r-email">Your email <span class="req">*</span></label>
+          <input id="r-email" name="email" type="email" required autocomplete="email">
+          <p class="form-note">Only so Speech Infinity can confirm the review is genuine. It is never
+            published and never shared.</p>
+        </div>
+
+        <div class="field">
+          <label class="consent">
+            <input type="checkbox" name="consent" value="yes" required>
+            <span>I am happy for this review to appear on the Speech Infinity website, credited as I
+              have chosen above. <span class="req">*</span></span>
+          </label>
+        </div>
+
+        <div class="cf-turnstile" data-sitekey="REPLACE_WITH_TURNSTILE_SITEKEY" data-theme="light"></div>
+        <button type="submit" class="btn btn-gold btn-lg" style="width:100%">Submit Review</button>
+        <p class="form-status" role="status" aria-live="polite"></p>
+      </form>
     </div>
   </section>
 

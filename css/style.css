@@ -498,14 +498,17 @@ section { padding: clamp(56px, 8vw, 104px) 0; }
 }
 .testimonial p { font-family: var(--serif); font-style: italic; font-size: 1.04rem; color: var(--green-900); }
 .testimonial footer { margin-top: auto; padding-top: 4px; }
-.testimonial .t-name {
+/* The attribution is a role, not a name — the named reviewers are anonymised
+   and submitted reviews may be too. .t-detail is the optional second line for
+   a reviewer who chose to be credited by name. */
+.testimonial .t-attrib {
   display: block;
   font-size: .95rem;
   font-weight: 700;
   color: var(--green-900);
   letter-spacing: .01em;
 }
-.testimonial .t-role {
+.testimonial .t-detail {
   display: block;
   font-size: .82rem;
   font-weight: 600;
@@ -591,6 +594,59 @@ input[type="file"] { padding: .65rem; background: var(--white); }
 .form-status { margin-top: 16px; font-size: .93rem; font-weight: 600; display: none; }
 .form-status.ok { display: block; color: var(--green-700); }
 .form-status.err { display: block; color: #A3392B; }
+
+/* fieldset used as a form field — strip the browser's default chrome */
+.fieldset { border: 0; padding: 0; margin: 0 0 20px; min-width: 0; }
+.fieldset legend {
+  padding: 0;
+  font-size: .82rem;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--green-800);
+  margin-bottom: 10px;
+}
+/* one choice per line: these options are sentences, not one-word labels */
+.radio-stack { display: grid; gap: 10px; }
+.field .radio-stack label {
+  display: grid;
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 400;
+  color: var(--charcoal);
+  margin-bottom: 0;
+  grid-template-columns: auto 1fr;
+  gap: .7rem;
+  align-items: start;
+  background: var(--cream);
+  border: 1.5px solid var(--line);
+  border-radius: 10px;
+  padding: .8rem 1rem;
+  font-size: .93rem;
+  line-height: 1.45;
+  cursor: pointer;
+  transition: border-color .2s var(--ease), background .2s var(--ease);
+}
+.field .radio-stack label:hover { border-color: var(--green-600); }
+.field .radio-stack input { width: auto; margin-top: .3rem; }
+.field .radio-stack strong { color: var(--green-900); }
+.field .radio-stack input:focus-visible { outline-offset: 2px; }
+
+.field label.consent {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: .7rem;
+  align-items: start;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: .93rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--charcoal);
+  cursor: pointer;
+  margin-bottom: 0;
+}
+.field label.consent input { width: auto; margin-top: .25rem; }
 
 .radio-row { display: flex; gap: 22px; flex-wrap: wrap; }
 .radio-row label {
