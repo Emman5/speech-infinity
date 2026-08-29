@@ -29,6 +29,8 @@
 </head>
 <body>
 
+<a class="skip-link" href="#main">Skip to main content</a>
+
 <header class="site-header">
   <div class="wrap nav">
     <a class="brand brand-logo" href="index.html">
@@ -38,14 +40,14 @@
         <span class="brand-sub">Therapy Group</span>
       </span>
     </a>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="index.html" class="active">Home</a></li>
+    <nav aria-label="Main"><ul class="nav-links" id="navLinks">
+      <li><a href="index.html" class="active" aria-current="page">Home</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="schools.html">School Districts</a></li>
       <li><a href="private.html">Private Therapy</a></li>
       <li><a href="careers.html">Join Our Team</a></li>
       <li class="mobile-cta"><a href="schools.html#contact">Contact Us</a></li>
-    </ul>
+    </ul></nav>
     <div class="nav-cta">
       <a href="schools.html#contact" class="btn btn-gold">Contact Us</a>
       <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
@@ -55,7 +57,7 @@
   </div>
 </header>
 
-<main>
+<main id="main" tabindex="-1">
 
   <!-- HERO -->
   <section class="hero hero-home">
@@ -145,24 +147,24 @@
   <section class="bg-gold">
     <div class="wrap">
       <div class="section-head center">
-        <p class="eyebrow" style="color:#0F2B22">What People Say</p>
+        <p class="eyebrow">What People Say</p>
         <h2>Trusted by Campuses and Families</h2>
       </div>
       <div class="testimonial-grid">
         <blockquote class="testimonial reveal">
           <p>"She is one of the most knowledgeable and dependable individuals I've worked with… both students and
             parents love her. She builds meaningful connections while providing high-quality support."</p>
-          <footer>Alexandra Crane · Special Education Coordinator</footer>
+          <footer><span class="t-name">Alexandra Crane</span><span class="t-role">Special Education Coordinator</span></footer>
         </blockquote>
         <blockquote class="testimonial reveal">
           <p>"Her communication with parents is clear, compassionate, and professional, helping families feel
             informed and supported throughout the process."</p>
-          <footer>Rozanne Millington, M.A., CCC-SLP</footer>
+          <footer><span class="t-name">Rozanne Millington</span><span class="t-role">M.A., CCC-SLP</span></footer>
         </blockquote>
         <blockquote class="testimonial reveal">
           <p>"I have seen so much improvement in his communication and confidence since working with her. We are
             very grateful to have her as his speech therapist."</p>
-          <footer>Parent of a Speech Infinity student</footer>
+          <footer><span class="t-name">Parent of a Speech Infinity student</span></footer>
         </blockquote>
       </div>
       <p class="center" style="margin-top:34px"><a href="about.html#testimonials" class="textlink">Read all testimonials</a></p>
@@ -191,7 +193,7 @@
         <p class="footer-slogan">Infinite Possibilities Through Communication</p>
       </div>
       <div>
-        <h4>Explore</h4>
+        <h2 class="footer-head">Explore</h2>
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="about.html">About</a></li>
@@ -201,7 +203,7 @@
         </ul>
       </div>
       <div>
-        <h4>Contact</h4>
+        <h2 class="footer-head">Contact</h2>
         <ul>
           <li><a href="mailto:speechinfinitytg@gmail.com">speechinfinitytg@gmail.com</a></li>
           <li><a href="tel:+12814603797">(281) 460-3797</a></li>

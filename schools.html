@@ -29,6 +29,8 @@
 </head>
 <body>
 
+<a class="skip-link" href="#main">Skip to main content</a>
+
 <header class="site-header">
   <div class="wrap nav">
     <a class="brand brand-logo" href="index.html">
@@ -38,10 +40,10 @@
         <span class="brand-sub">Therapy Group</span>
       </span>
     </a>
-    <ul class="nav-links" id="navLinks">
+    <nav aria-label="Main"><ul class="nav-links" id="navLinks">
       <li><a href="index.html">Home</a></li>
       <li><a href="about.html">About</a></li>
-      <li><a href="schools.html" class="active">School Districts</a></li>
+      <li><a href="schools.html" class="active" aria-current="page">School Districts</a></li>
       <li><a href="private.html">Private Therapy</a></li>
       <li><a href="careers.html">Join Our Team</a></li>
       <li class="mobile-cta"><a href="#contact">Contact Us</a></li>
@@ -55,7 +57,7 @@
   </div>
 </header>
 
-<main>
+<main id="main" tabindex="-1">
 
   <section class="hero page-hero">
     <div class="wrap hero-inner">
@@ -167,24 +169,24 @@
   <section class="bg-gold">
     <div class="wrap">
       <div class="section-head center">
-        <p class="eyebrow" style="color:#0F2B22">From Our Colleagues</p>
+        <p class="eyebrow">From Our Colleagues</p>
         <h2>What Campus Teams Say</h2>
       </div>
       <div class="testimonial-grid">
         <blockquote class="testimonial reveal">
           <p>"She has a strong understanding of compliance and handles her responsibilities with professionalism
             and care… She is not only excellent at what she does, but also a wonderful person to work with."</p>
-          <footer>Alexandra Crane · Special Education Coordinator</footer>
+          <footer><span class="t-name">Alexandra Crane</span><span class="t-role">Special Education Coordinator</span></footer>
         </blockquote>
         <blockquote class="testimonial reveal">
           <p>"Mrs. Vazquez upholds the highest standards of care and ensures her entire team is meticulously
             trained to deliver that same level of excellence."</p>
-          <footer>Danielle Grant · Special Education Teacher</footer>
+          <footer><span class="t-name">Danielle Grant</span><span class="t-role">Special Education Teacher</span></footer>
         </blockquote>
         <blockquote class="testimonial reveal">
           <p>"Her professionalism, expertise, and dedication make her an invaluable partner to our school
             community."</p>
-          <footer>Sara Maccagnan · Licensed School Psychologist</footer>
+          <footer><span class="t-name">Sara Maccagnan</span><span class="t-role">Licensed School Psychologist</span></footer>
         </blockquote>
       </div>
     </div>
@@ -199,8 +201,8 @@
         <p class="lede">Tell us about your campus and caseload. We will respond with availability, service
           options, and rates.</p>
         <p><strong>Preferred email</strong><br>
-          <a href="mailto:speechinfinitytg@gmail.com">speechinfinitytg@gmail.com</a><br>
-          <a href="tel:+12814603797">(281) 460-3797</a></p>
+          <a class="contact-link" href="mailto:speechinfinitytg@gmail.com">speechinfinitytg@gmail.com</a><br>
+          <a class="contact-link" href="tel:+12814603797">(281) 460-3797</a></p>
         <p style="font-size:.9rem;color:var(--charcoal-soft)">Please do not include student names or any
           confidential student information in this form.</p>
       </div>
@@ -273,7 +275,7 @@
         <p class="footer-slogan">Infinite Possibilities Through Communication</p>
       </div>
       <div>
-        <h4>Explore</h4>
+        <h2 class="footer-head">Explore</h2>
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="about.html">About</a></li>
@@ -283,7 +285,7 @@
         </ul>
       </div>
       <div>
-        <h4>Contact</h4>
+        <h2 class="footer-head">Contact</h2>
         <ul>
           <li><a href="mailto:speechinfinitytg@gmail.com">speechinfinitytg@gmail.com</a></li>
           <li><a href="tel:+12814603797">(281) 460-3797</a></li>

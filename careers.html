@@ -29,6 +29,8 @@
 </head>
 <body>
 
+<a class="skip-link" href="#main">Skip to main content</a>
+
 <header class="site-header">
   <div class="wrap nav">
     <a class="brand brand-logo" href="index.html">
@@ -38,12 +40,12 @@
         <span class="brand-sub">Therapy Group</span>
       </span>
     </a>
-    <ul class="nav-links" id="navLinks">
+    <nav aria-label="Main"><ul class="nav-links" id="navLinks">
       <li><a href="index.html">Home</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="schools.html">School Districts</a></li>
       <li><a href="private.html">Private Therapy</a></li>
-      <li><a href="careers.html" class="active">Join Our Team</a></li>
+      <li><a href="careers.html" class="active" aria-current="page">Join Our Team</a></li>
       <li class="mobile-cta"><a href="#apply">Apply Now</a></li>
     </ul>
     <div class="nav-cta">
@@ -55,7 +57,7 @@
   </div>
 </header>
 
-<main>
+<main id="main" tabindex="-1">
 
   <section class="hero page-hero">
     <div class="wrap hero-inner">
@@ -225,8 +227,8 @@
         <p><a class="btn btn-gold btn-lg"
               href="mailto:speechinfinitytg@gmail.com?subject=SLP%2FSLPA%20Application%20%E2%80%94%20Speech%20Infinity%20Therapy%20Group">Email
           Your Resume</a></p>
-        <p><a href="mailto:speechinfinitytg@gmail.com">speechinfinitytg@gmail.com</a><br>
-          <a href="tel:+12814603797">(281) 460-3797</a></p>
+        <p><a class="contact-link" href="mailto:speechinfinitytg@gmail.com">speechinfinitytg@gmail.com</a><br>
+          <a class="contact-link" href="tel:+12814603797">(281) 460-3797</a></p>
         <p style="font-size:.9rem;color:var(--charcoal-soft)">Students and clinical fellows are welcome to apply
           for clinical assisting positions. Applications for the 2026–2027 school year are reviewed on a rolling
           basis</p>
@@ -244,7 +246,7 @@
         <p class="footer-slogan">Infinite Possibilities Through Communication</p>
       </div>
       <div>
-        <h4>Explore</h4>
+        <h2 class="footer-head">Explore</h2>
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="about.html">About</a></li>
@@ -254,7 +256,7 @@
         </ul>
       </div>
       <div>
-        <h4>Contact</h4>
+        <h2 class="footer-head">Contact</h2>
         <ul>
           <li><a href="mailto:speechinfinitytg@gmail.com">speechinfinitytg@gmail.com</a></li>
           <li><a href="tel:+12814603797">(281) 460-3797</a></li>

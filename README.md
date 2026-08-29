@@ -63,6 +63,22 @@ python3 -m http.server 8080
 Full-resolution originals live in `../source-assets/`, outside the deployed site.
 Portrait slots are `aspect-ratio: 4/5` with `object-fit: cover`.
 
+## Accessibility
+
+Verified with a headless-Chromium sweep across 320/375/414/768/1024/1280/1440 on all
+five pages: no horizontal scroll, no skipped heading levels, one `h1` per page, every
+image has alt text, every internal link and `#anchor` resolves, and all body/UI text
+clears WCAG AA contrast.
+
+Things that are easy to break again:
+
+- `--gold-600` (#A88326) is only 3.5:1 on white. **Text uses `--gold-text` (#856517)**;
+  `--gold-600` is for borders and fills only.
+- Every page opens with a `.skip-link` to `<main id="main" tabindex="-1">`. Keep both.
+- `.split > * { min-width: 0 }` is what stops the fixed-width Turnstile widget from
+  widening the whole page below 375px. `.cf-turnstile` also gets its own `overflow-x`.
+- Footer section headings are `h2.footer-head`, not `h4` — an `h4` there skips a level.
+
 ## Privacy guardrail
 No form collects student names, IEP content, or clinical information — intentional, keeps the
 site outside HIPAA/FERPA territory. Keep it that way.
