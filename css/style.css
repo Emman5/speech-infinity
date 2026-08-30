@@ -11,11 +11,6 @@
   --green-100: #E4EDE8;
   --green-050: #F1F6F3;
 
-  /* lighter teal — used for the home hero */
-  --teal-700: #1F6B63;
-  --teal-600: #2A8079;
-  --teal-500: #36978D;
-
   --gold-600: #A88326;
   /* --gold-600 is only 3.5:1 on white; this is the darkest brand gold that clears
      4.5:1 on white, cream, and mint, so all small gold text uses it */
@@ -268,18 +263,25 @@ section { padding: clamp(56px, 8vw, 104px) 0; }
 .page-hero { padding: clamp(70px, 9vw, 110px) 0; }
 .page-hero p { max-width: 64ch; }
 
-/* home hero — lighter teal treatment */
+/* home hero — deep brand green + gold, matching the logo */
 .hero-home {
   background:
-    linear-gradient(115deg, rgba(31,107,99,.94) 0%, rgba(54,151,141,.86) 55%, rgba(31,107,99,.94) 100%),
-    var(--hero-img, radial-gradient(circle at 30% 30%, #3AA79B, #1F6B63));
+    linear-gradient(115deg, rgba(15,43,34,.94) 0%, rgba(27,81,64,.86) 55%, rgba(15,43,34,.94) 100%),
+    var(--hero-img, radial-gradient(circle at 30% 30%, #1B5140, #0F2B22));
 }
-.hero-home::after { border-color: rgba(255, 255, 255, .30); }
-.hero-home .eyebrow { color: #F3E3B4; }
+.hero-home::after { border-color: rgba(201, 166, 60, .28); }
+.hero-home .eyebrow { color: var(--gold-400); }
 .hero-home p { color: rgba(255,255,255,.92); }
-.hero-home .hero-tags {
+
+/* the home hero is a single centred column so the headline, accent line,
+   supporting copy and the three buttons all share one axis */
+.hero-home .hero-inner { margin-inline: auto; text-align: center; }
+.hero-home .hero-inner > p { margin-inline: auto; }
+.hero-home .hero-ctas { justify-content: center; }
+
+.hero .hero-tags {
   margin: 22px 0 0;
-  color: #F3E3B4;
+  color: var(--gold-400);
   font-weight: 600;
   font-size: 1rem;
   letter-spacing: .02em;
@@ -291,7 +293,7 @@ section { padding: clamp(56px, 8vw, 104px) 0; }
   font-weight: 700;
   letter-spacing: .12em;
   text-transform: uppercase;
-  color: #F3E3B4;
+  color: var(--gold-400);
   margin-top: .7rem;
 }
 
