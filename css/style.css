@@ -280,12 +280,18 @@ section { padding: clamp(56px, 8vw, 104px) 0; }
 .hero-home .hero-ctas { justify-content: center; }
 
 .hero .hero-tags {
+  /* one centred line — exempt from the 62ch measure that .hero p sets, and
+     allowed to shrink a little so it survives narrow phones intact */
+  max-width: none;
   margin: 22px 0 0;
+  text-align: center;
   color: var(--gold-400);
   font-weight: 600;
-  font-size: 1rem;
+  font-size: clamp(.82rem, 2.4vw, 1rem);
   letter-spacing: .02em;
 }
+/* if it ever must wrap, it breaks between items — never inside one */
+.hero .hero-tags span { white-space: nowrap; }
 .hero-home h1 .accent {
   display: block;
   font-size: .46em;
