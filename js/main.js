@@ -39,12 +39,64 @@
   }
 
   /* ---- forms ----
-     Submissions POST to the Technical Creations forms Worker, which emails
-     them to the practice. The endpoint lives in each form's action attribute. */
+     A form marked data-mailto has no server behind it: we assemble the answers
+     into a readable message and hand it to the visitor's own mail app, already
+     addressed to the practice. Everything else still POSTs to an endpoint. */
+
+  /* The visible <label> is what the practice should read in the email, so the
+     message uses that rather than the raw field name. */
+  function fieldLabel(form, name) {
+    var el = form.querySelector('[name="' + name + '"]');
+    if (!el) { return name; }
+    var lab = el.id ? form.querySelector('label[for="' + el.id + '"]') : null;
+    if (!lab) {
+      var field = el.closest ? el.closest('.field, .fieldset') : null;
+      lab = field ? field.querySelector('label, legend') : null;
+    }
+    return (lab ? lab.textContent : name).replace(/\*/g, '').replace(/\s+/g, ' ').trim();
+  }
+
+  function composeMail(form) {
+    var labels = {};
+    var lines = [];
+    new FormData(form).forEach(function (value, name) {
+      if (name === '_gotcha' || name.charAt(0) === '_') { return; }
+      if (typeof value !== 'string' || !value.trim()) { return; }
+      if (!labels[name]) { labels[name] = fieldLabel(form, name); }
+      lines.push(labels[name] + ': ' + value.trim());
+    });
+    return lines;
+  }
+
   document.querySelectorAll('form[data-form]').forEach(function (form) {
     form.addEventListener('submit', function (e) {
       var status = form.querySelector('.form-status');
       var action = form.getAttribute('action') || '';
+      var mailto = form.getAttribute('data-mailto');
+
+      if (mailto) {
+        e.preventDefault();
+        var lines = composeMail(form);
+        if (!lines.length) { return; }
+
+        var subject = form.getAttribute('data-subject') || 'Website enquiry';
+        var body = subject + '\n' +
+          'Sent from the Speech Infinity website\n\n' +
+          lines.join('\n') + '\n';
+
+        // The form is deliberately not reset — if the mail app fails to open,
+        // the visitor still has everything they typed.
+        if (status) {
+          status.className = 'form-status ok';
+          status.textContent =
+            'Opening your email app with your details filled in — press send to deliver it. ' +
+            'If nothing opens, email speechinfinitytg@gmail.com directly.';
+        }
+        window.location.href = 'mailto:' + mailto +
+          '?subject=' + encodeURIComponent(subject) +
+          '&body=' + encodeURIComponent(body);
+        return;
+      }
 
       if (!action || action.indexOf('REPLACE_WITH_FORM_ENDPOINT') !== -1) {
         e.preventDefault();

@@ -16,37 +16,39 @@ python3 -m http.server 8080
 | `careers.html` | Recruiting — advantages, rates table, application form |
 
 `css/style.css` holds the whole design system (green/gold/cream, Playfair Display + Inter).
-`js/main.js` handles mobile nav, scroll reveal, and AJAX form submission.
+`js/main.js` handles mobile nav, scroll reveal, and form submission.
+
+## How the lead forms deliver
+
+There is no mail server and no third-party form service. The forms on
+`schools.html` and `private.html` are marked `data-mailto`; on submit, `main.js`
+assembles the answers into a labelled plain-text message and opens the visitor's
+own mail app with it, addressed to `speechinfinitytg@gmail.com`. The visitor
+presses send, so the mail arrives from their own address and a reply goes
+straight back to them.
+
+Consequences worth knowing: delivery depends on the visitor having a working
+mail app, nothing is recorded server-side, and there is no spam filtering (hence
+no Turnstile — there is no server to verify a challenge against). `careers.html`
+already worked this way, via its "Email Your Resume" button.
 
 ## Before launch
 
 ### Blocked on infrastructure (Cloudflare / Resend / domain)
 
-1. **Turnstile sitekey.** `schools.html` and `private.html` carry
-   `data-sitekey="REPLACE_WITH_TURNSTILE_SITEKEY"`. Create the widget after the Cloudflare
-   account exists.
-2. **Analytics token.** All five pages carry `data-cf-beacon` with
+1. **Analytics token.** All five pages carry `data-cf-beacon` with
    `REPLACE_WITH_CF_ANALYTICS_TOKEN`.
-3. **Forms Worker.** The two lead forms POST to
-   `https://tc-forms.technicalcreations.workers.dev/f/speech-infinity`; the review form
-   posts to `/r/speech-infinity` on the same host. That Worker (`ops/forms-worker/` in
-   the parent workspace) is written and tested but not deployed, and the `workers.dev`
-   subdomain must match the real Cloudflare account.
-4. **Review storage + moderation.** Reviews need a KV namespace
-   (`wrangler kv namespace create REVIEWS`) and `REVIEW_ADMIN_TOKEN_SPEECH_INFINITY`
-   set as a secret. Until both exist the review section stays hidden and the form
-   reports an error rather than silently dropping anything.
-5. **Domain + DNS.** `speechinfinitytg.com` is not registered and does not resolve. The
+2. **Domain + DNS.** `speechinfinitytg.com` is not registered and does not resolve. The
    canonical URLs and `og:image` absolute URLs assume it.
 
 ### Blocked on the client
 
-6. **Credentials to verify.** The credentials list shows *M.S. — Universitat de Vic, Spain* and
+3. **Credentials to verify.** The credentials list shows *M.S. — Universitat de Vic, Spain* and
    *B.S. — University of Houston*. The bio Janette supplied only says "bachelor's and master's
    degrees in speech-language pathology." Confirm institutions before publishing.
-7. **Founder quote.** The pull quote on `about.html` ("Every student has infinite potential…") was
+4. **Founder quote.** The pull quote on `about.html` ("Every student has infinite potential…") was
    drafted for her, not written by her. She must approve or replace it.
-8. ~~**Testimonials** consent.~~ Resolved: the five named reviewers are now credited by
+5. ~~**Testimonials** consent.~~ Resolved: the five named reviewers are now credited by
    role only (*Special Education Coordinator*, *Licensed School Psychologist*, …). The
    wording is still verbatim from `Testimonials.docx`, but no individual is identified,
    so no consent is outstanding. If anyone later wants their name shown, add it back by
@@ -54,7 +56,7 @@ python3 -m http.server 8080
 
 ### Optional
 
-9. **Hero photography.** Hero uses a green gradient. To use a photo, set
+6. **Hero photography.** Hero uses a green gradient. To use a photo, set
    `--hero-img: url('images/hero.jpg')` on the `.hero` element.
 
 ## Images

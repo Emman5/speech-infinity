@@ -191,8 +191,10 @@
           or diagnostic documents. We will collect what is needed securely once we connect.</p>
       </div>
 
-      <form class="form-panel reveal" data-form action="https://tc-forms.technicalcreations.workers.dev/f/speech-infinity" method="POST">
-        <input type="hidden" name="_form" value="private">
+      <form class="form-panel reveal" data-form
+            data-mailto="speechinfinitytg@gmail.com"
+            data-subject="Private therapy inquiry"
+            action="mailto:speechinfinitytg@gmail.com" method="post" enctype="text/plain">
         <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" class="hp">
         <div class="field-row">
           <div class="field">
@@ -238,7 +240,6 @@
           <label for="p-message">Anything else?</label>
           <textarea id="p-message" name="message" placeholder="Availability, location, questions…"></textarea>
         </div>
-        <div class="cf-turnstile" data-sitekey="REPLACE_WITH_TURNSTILE_SITEKEY" data-theme="light"></div>
         <button type="submit" class="btn btn-gold btn-lg" style="width:100%">Schedule a Consultation</button>
         <p class="form-status" role="status" aria-live="polite"></p>
         <p class="form-note">We typically respond within one business day.</p>
@@ -284,6 +285,5 @@
 <script src="js/main.js"></script>
 <!-- Cloudflare Web Analytics -->
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "REPLACE_WITH_CF_ANALYTICS_TOKEN"}'></script>
-<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </body>
 </html>
